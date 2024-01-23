@@ -1,29 +1,30 @@
-<html>
-<script src="https://sfpd2-dev-ed.my.site.com/lightning/lightning.out.js"></script>
-<div data-lightning-out="true"></div>
-  <script>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
 
-    const appName = 'c:LightningOutDependencyApp';
-    const componentName = 'c:HelloWorld';
-    const lightningEndpoint = 'https://sfpd2-dev-ed.my.site.com';
-    const targetElement = document.querySelector("[data-lightning-out]");
-    const componentAttributes = {
+    <div id="lightningout"></div>
 
-    };
-
-    $Lightning.use(
-            appName,
-            function (){
-              $Lightning.createComponent(
-                      componentName,
-                      componentAttributes,
-                      targetElement,
-                      function (cmp){
-                        console.log('lightning component created');
-                      }
-              );
-            },
-            lightningEndpoint
-    );
-  </script>
+    <script src="https://sfpd2-dev-ed.my.site.com/lightning/lightning.out.js"></script>
+    <script>
+      $Lightning.use(
+        'c:LightningOutDependencyApp', // name of the Lightning app
+        function () {
+          // Callback once framework and app loaded
+          $Lightning.createComponent(
+            'c:HelloWorld', // top-level component of your app
+            {}, // attributes to set on the component when created
+            'lightningout', // the DOM location to insert the component
+            function (cmp) {
+              // callback when component is created and active on the page
+            }
+          );
+        },
+        'https://sfpd2-dev-ed.my.site.com' // Site endpoint
+      );
+    </script>
+  </body>
 </html>
